@@ -1,5 +1,12 @@
-<h3>{{title}}</h3>
+<h2>
+	Dummy Users
+</h2>
+<div class="row">
+	{{# each dummyusers}}
+		<div class="col-md">
+			{{this.firstName}}
+		</div>
+	{{/each}}
+</div>
 
-{{# each dummyusers }}
----	{{this.name}}
-{{/each}}
+	

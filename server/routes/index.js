@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+var dummyusersCtrl = require('../controllers/dummyusers');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+module.exports = (app) => {
+  app.get('/', function(req, res, next) {
+  	res.render('index', { title: 'Admission System' });
+  })
 
-module.exports = router;
+  app.get('/api', (req, res) => res.status(200).send({
+    message: 'Welcome to the Todos API!',
+  }));
+
+  app.get('/dummyusers', dummyusersCtrl.dummyusersindex);
+};

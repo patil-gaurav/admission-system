@@ -5,13 +5,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 
-var indexRouter = require('./server/routes/index');
-var usersRouter = require('./server/routes/users');
-var dummyusersRouter = require('./server/routes/dummyuser');
-
 var app = express();
 
-mongoose.connect('localhost:27017/admission-system');
+mongoose.connect('mongodb://localhost:27017/admission-system');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));
@@ -23,9 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/dummyusers', dummyusersRouter);
+require('./server/routes')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
