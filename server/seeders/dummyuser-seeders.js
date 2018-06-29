@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost:27017/admission-system')
 console.log('=========Creating dummyusers=========');
 var done = 0;
 var batchJob = [];
-for (var i = 0; i < 5; i++) {
+for (var i = 0; i < 5000; i++) {
 	var dummyuser = new Dummyuser({
 	    firstName: faker.name.firstName(),
 	    lastName: faker.name.lastName(),
@@ -23,7 +23,7 @@ for (var i = 0; i < 5; i++) {
 			console.log("-----Error-----" + err);
 		}
 		done++;
-		if (done == 5) {
+		if (done == 5000) {
 			exit();
 			console.log('=========Created dummyusers=========');
 		}

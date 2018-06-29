@@ -2,11 +2,18 @@
 	Dummy Users
 </h2>
 <div class="row">
-	{{# each dummyusers}}
-		<div class="col-md">
-			{{this.firstName}}
-		</div>
-	{{/each}}
+	<table class="table">
+		<tbody>
+			{{# each dummyusers}}
+			<tr>
+				<td><img src="{{ this.avtar }}" class="rounded-circle" style="height: 70px;" /></td>
+				<td>{{ this.firstName }} {{ this.lastName }}</td>
+				<td>{{ this.email }}</td>
+				<td>{{ this.country }}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>	
 </div>
 
 	
