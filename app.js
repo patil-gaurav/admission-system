@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+var expressHbs = require('express-handlebars');
 
 var app = express();
 
@@ -11,8 +12,13 @@ mongoose.connect('mongodb://localhost:27017/admission-system');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));
-app.set('view engine', 'hbs');
-
+app.engine('.hbs', expressHbs({
+  defaultLayout: 'layout',
+  extname: '.hbs',
+  layoutsDir: 'server/views/layouts',
+  partialsDir: 'server/views/partials'
+}));
+app.set('view engine', '.hbs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
