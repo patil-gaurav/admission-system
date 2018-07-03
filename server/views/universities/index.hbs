@@ -1,0 +1,19 @@
+<h4>
+	Universities
+</h4>
+<div class="row">
+	<table class="table">
+		<tbody>
+			{{# each universities}}
+			<tr>
+				<td>{{ this.id }}</td>
+				<td>{{ this.name }} {{ this.lastName }}</td>
+				<td>{{ this.address }}</td>
+				<td>{{ this.state.name }}</td>
+			</tr>
+			{{/each}}
+		</tbody>
+	</table>	
+</div>
+
+	

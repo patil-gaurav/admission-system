@@ -1,4 +1,5 @@
 var dummyusersCtrl = require('../controllers/dummyusers');
+var universityCtrl = require('../controllers/universities');
 
 module.exports = (app) => {
   app.get('/', function(req, res, next) {
@@ -10,4 +11,6 @@ module.exports = (app) => {
   }));
 
   app.get('/dummyusers', dummyusersCtrl.dummyusersindex);
+
+  app.get('/universities', universityCtrl.index);
 };
