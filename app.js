@@ -6,9 +6,15 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var expressHbs = require('express-handlebars');
 
+var bodyParser = require('body-parser');
+var passport = require('passport');
+var config = require('./config/database');
+var jwt = require('jwt-simple');
+
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/admission-system');
+require('./config/passport')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'server/views'));
@@ -24,6 +30,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.use(passport.initialize())
+
 
 require('./server/routes')(app);
 
